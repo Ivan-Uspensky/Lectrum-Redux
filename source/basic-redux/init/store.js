@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import { rootReducer } from './rootReducer';
+import thunk from 'redux-thunk';
 
 const logger = createLogger({
   duration: true,
@@ -14,16 +15,14 @@ const logger = createLogger({
   }
 });
 
-const preloadState = JSON.parse(localStorage.getItem('gallery'));
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const composeEnhancers = devtools ? devtools : compose;
-const enhancedStore = composeEnhancers(applyMiddleware(logger));
+const composeEnhancers = __DEV__ && devtools ? devtools : compose;
+const middleware = [thunk];
 
-export const store = preloadState
-  ? createStore(rootReducer, preloadState, enhancedStore)
-  : createStore(rootReducer, enhancedStore);
+if (__DEV__) {
+  middleware.push(logger);
+}
 
-store.subscribe(() => {
-  const state = store.getState();
-  localStorage.setItem('gallery', JSON.stringify(state));
-});
+const enhancedStore = composeEnhancers(applyMiddleware(...middleware));
+
+export const store = createStore(rootReducer, enhancedStore);
