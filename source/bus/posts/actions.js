@@ -24,8 +24,8 @@ export const createPostAsync = (data) => async(dispatch) => {
     payload: data
   });
   const response = await api.posts.create(data);
-  const result = await response.json();
-  if (result.message === 'the request has succeeded') {
+  if (response.status === 200) {
+    // const result = await response.json();
     dispatch(fetchPostsAsync());
   }
 };
