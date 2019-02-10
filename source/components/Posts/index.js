@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { List } from 'immutable';
 import FlipMove from 'react-flip-move';
 
 // Instruments
@@ -11,7 +10,7 @@ import { mockedProfile } from '../../instruments/mockedData';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
-import { fetchPostsAsync, createPostAsync } from '../../bus/posts/actions';
+import { postActions } from '../../bus/posts/actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -21,7 +20,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({fetchPostsAsync, createPostAsync}, dispatch),
+        actions: bindActionCreators(
+            {
+                fetchPostsAsync: postActions.fetchPostsAsync, 
+                createPostAsync: postActions.createPostAsync
+            }, dispatch),
     };
 };
 

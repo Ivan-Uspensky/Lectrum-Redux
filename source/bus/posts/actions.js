@@ -1,31 +1,36 @@
-import { FILL_POSTS, FETCH_POSTS_ASYNC, CREATE_POST_ASYNC } from './types';
+import { types } from './types';
 
-import { api } from '../../REST';
+export const postActions = {
 
-export const fillPosts = (posts) => {
-  return {
-    type: FILL_POSTS,
-    payload: posts
-  };
-};
+  fillPosts: (posts) => {
+    return {
+      type: types.FILL_POSTS,
+      payload: posts
+    };
+  },
+  
+  // fetchPostsAsync: () => async(dispatch) => {
+  //   dispatch({
+  //     type: types.FETCH_POSTS_ASYNC
+  //   });
+  //   const response = await api.posts.fetch();
+  //   const result = await response.json();
+  //   dispatch(postActions.fillPosts(result.data));
+  // },
+  
+  fetchPostsAsync: () => {
+    return {
+      type: types.FETCH_POSTS_ASYNC
+    };
+  },
 
-export const fetchPostsAsync = () => async(dispatch) => {
-  dispatch({
-    type: FETCH_POSTS_ASYNC
-  });
-  const response = await api.posts.fetch();
-  const result = await response.json();
-  dispatch(fillPosts(result.data));
-};
+  createPostAsync: (data) => {
+    return {
+      type: types.CREATE_POST_ASYNC,
+      payload: data
+    };
+  },
 
-export const createPostAsync = (data) => async(dispatch) => {
-  dispatch({
-    type: CREATE_POST_ASYNC,
-    payload: data
-  });
-  const response = await api.posts.create(data);
-  if (response.status === 200) {
-    // const result = await response.json();
-    dispatch(fetchPostsAsync());
-  }
-};
+}
+
+
