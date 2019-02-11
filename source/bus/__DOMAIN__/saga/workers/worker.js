@@ -1,14 +1,13 @@
 import { put, apply } from 'redux-saga/effects';
 
 import { api } from '../../../../REST';
-import { postActions } from '../../actions';
 import { uiActions } from '../../../ui/actions';
 
-export function* createPost({payload: data}) {
+export function* createPost() {
   try {
     yield put(uiActions.startFetching());
     
-    const response = yield apply(api, api.posts.create, [data]);
+    const response = yield apply(api, api.posts.fetch);
     const {data: post, message} = yield apply(response, response.json);
     
     if (response.status !== 200) {
