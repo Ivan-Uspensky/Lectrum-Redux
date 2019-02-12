@@ -9,10 +9,10 @@ const initialState = Map({
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.AUTHENTICATE:
-      return state.set('isAuthenticated');
+      return state.set('isAuthenticated', true);
     case types.SIGNUP_ASYNC:
       return state;
     default:
       return state;
   }
-};
+}; 

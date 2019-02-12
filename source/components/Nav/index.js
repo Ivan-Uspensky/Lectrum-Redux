@@ -9,10 +9,17 @@ import Styles from './styles.m.css';
 import { book } from '../../navigation/book';
 import { mockedProfile } from '../../instruments/mockedData';
 
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.get('isAuthenticated'),
+        profile: state.profile
+    }
+}
+
+@connect(mapStateToProps)
 export default class Nav extends Component {
     static defaultProps = {
         // State
-        profile:         mockedProfile,
         isOnline:        false,
         // Actions
         logoutAsync: () => {},
@@ -20,7 +27,7 @@ export default class Nav extends Component {
 
     _getNav = () => {
         const { isAuthenticated, profile } = this.props;
-
+        console.log('isAuthenticated: ', isAuthenticated);
         return isAuthenticated ?
             <>
                 <div>
