@@ -15,4 +15,11 @@ export const authActions = {
     };
   },
 
+  loginAsync: (userData) => {
+    return {
+      type: types.LOGIN_ASYNC,
+      payload: userData
+    };
+  }
+
 }

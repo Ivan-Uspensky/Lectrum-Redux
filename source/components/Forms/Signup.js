@@ -8,7 +8,6 @@ import cx from 'classnames';
 import Styles from './styles.m.css';
 import { signup } from '../../bus/forms/shapes';
 
-// import { authActions } from '../../bus/auth/actions';
 import { authActions } from '../../bus/auth/actions';
  
 const mapStateToProps = (state) => {
