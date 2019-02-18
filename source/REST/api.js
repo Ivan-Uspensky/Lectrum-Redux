@@ -62,6 +62,14 @@ export const api = {
           comment: data
         })
       });
-    }
+    },
+    delete(id) {
+      return fetch(`${MAIN_URL}/feed/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: this.token,
+        }
+      });
+    },
   }
 };

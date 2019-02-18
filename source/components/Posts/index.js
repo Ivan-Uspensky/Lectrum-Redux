@@ -23,7 +23,8 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators(
             {
                 fetchPostsAsync: postActions.fetchPostsAsync, 
-                createPostAsync: postActions.createPostAsync
+                createPostAsync: postActions.createPostAsync,
+                deletePostAsync: postActions.deletePostAsync,
             }, dispatch),
     };
 };

@@ -1,14 +1,13 @@
 // Core
 import React, { Component } from 'react';
 import moment from 'moment';
-
 // Instruments
 import Styles from './styles.m.css';
-
 // Components
 import { Like } from '../../components';
 
 export default class Post extends Component {
+    
     _getCross = () => {
         const { profile, author } = this.props;
 
@@ -19,8 +18,7 @@ export default class Post extends Component {
 
     _removePost = () => {
         const { actions, id } = this.props;
-
-        actions.removePostAsync(id);
+        actions.deletePostAsync(id);
     };
 
     render () {

@@ -28,6 +28,13 @@ export const postActions = {
     };
   },
 
+  deletePostAsync: (id) => {
+    return {
+      type: types.DELETE_POST_ASYNC,
+      payload: id
+    };
+  },
+
 }
 
 
