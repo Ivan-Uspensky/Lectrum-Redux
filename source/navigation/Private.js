@@ -6,8 +6,16 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Feed, Profile, NewPassword } from '../pages';
 
 import { book } from './book';
+import { socket } from '../init/socket';
 
 export default class Private extends Component {
+    componentDidMount() {
+        const { listenPosts } = this.props;
+        listenPosts();
+    }
+    componentWillUnmount() {
+        socket.removeListener('create');
+    }
     render () {
       return (
           <Switch>

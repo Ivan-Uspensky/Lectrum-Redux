@@ -25,6 +25,12 @@ export const postActions = {
       payload: likePostData
     };
   },
+  createPost: (data) => {
+    return {
+      type: types.CREATE_POST,
+      payload: data
+    };
+  },
   
   fetchPostsAsync: () => {
     return {
