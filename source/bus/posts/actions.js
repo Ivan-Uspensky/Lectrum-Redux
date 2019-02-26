@@ -19,16 +19,22 @@ export const postActions = {
       payload: likePostData
     };
   },
-  unlikePost: (likePostData) => {
+  unlikePost: (unlikePostData) => {
     return {
       type: types.UNLIKE_POST,
-      payload: likePostData
+      payload: unlikePostData
     };
   },
   createPost: (data) => {
     return {
       type: types.CREATE_POST,
       payload: data
+    };
+  },
+  deletePost: (postId) => {
+    return {
+      type: types.DELETE_POST,
+      payload: postId
     };
   },
   
