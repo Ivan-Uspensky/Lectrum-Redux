@@ -37,6 +37,12 @@ export const postActions = {
       payload: postId
     };
   },
+  createPost: (data) => {
+    return {
+      type: types.CREATE_POST,
+      payload: data
+    };
+  },
   
   fetchPostsAsync: () => {
     return {
